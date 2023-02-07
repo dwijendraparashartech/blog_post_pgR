@@ -1,6 +1,14 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
 
+ # if @post.user == current_user
+ #    flash.now[:error] = 'unauthorized access!'
+ #    redirect_to posts_path
+ # end
+
+
+
+
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
@@ -22,6 +30,7 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
+     # @blog.user = current_user
 
     respond_to do |format|
       if @blog.save

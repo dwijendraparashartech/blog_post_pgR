@@ -54,6 +54,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'simplecov', require: false
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
