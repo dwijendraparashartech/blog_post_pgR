@@ -78,3 +78,4 @@ gem 'pg'
 gem 'react-rails'
 gem 'devise'
 gem "webpacker", "~> 5.4"
+gem 'grape'

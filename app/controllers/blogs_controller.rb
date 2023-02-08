@@ -1,12 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-
- # if @post.user == current_user
- #    flash.now[:error] = 'unauthorized access!'
- #    redirect_to posts_path
- # end
-
-
+  before_action :set_user, only: %i[   edit update destroy ]
 
 
   # GET /blogs or /blogs.json
@@ -66,8 +60,16 @@ class BlogsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
+    
+    def set_user
+      @user = User.find_by(id: params[:id])
+      return render json: {message: "User not found"}, :status => :not_found unless @user.present?
+    end
+
     def set_blog
       @blog = Blog.find(params[:id])
     end

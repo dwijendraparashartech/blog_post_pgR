@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum login_type: { "user" => "user", "guest" => "guest", "admin" => 'admin'}
+  belongs_to :blog
 end
