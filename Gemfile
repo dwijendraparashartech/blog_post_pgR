@@ -27,6 +27,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+
+# Insert the TinyMCE WYSIWYG into the blog
+gem 'tinymce-rails'
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 

@@ -3,6 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum login_type: { "user" => "user", "guest" => "guest", "admin" => 'admin'}
+  enum author_type: { "user" => "user", "guest" => "guest", "admin" => 'admin'}
   belongs_to :blog
 end

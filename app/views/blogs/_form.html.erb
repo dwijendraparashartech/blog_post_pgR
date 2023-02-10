@@ -1,5 +1,9 @@
-<%= form_with(model: blog) do |form| %>
-  <% if blog.errors.any? %>
+
+
+
+<%= form_with(model: blog,local: false) do |form| %>
+  <div class="modal-body">
+       <% if blog.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
 
@@ -17,21 +21,30 @@
   </div>
 
   <div>
+      <%= form.label :blog_body, style: "display: block" %>
+      <%= form.text_area :blog_body %>
+      <%= tinymce_assets %>
+    <script type="text/javascript" src="/assets/tinymce.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key" referrerpolicy="origin"></script>
+    <%= text_area_tag :content, "Please Write the Blog Content Here.", :class => "tinymce", :rows => 1, :cols => 4 %>
+    <%= tinymce %>
+</div>
+
+
+
+  <div>
     <%= form.label :author_type, style: "display: block" %>
-    <%= form.text_field :author_type %>
+    <%= form.select :author_type, [['User','user'],['Guest','guest'],['Admin','admin']] %>
   </div>
 
-  <div>
-    <%= form.label :blog_body, style: "display: block" %>
-    <%= form.text_area :blog_body %>
   </div>
+  <div class="modal-footer">
+    <div class = "center">
+      <%= form.submit %>
+    </div>
 
-<!--   <div>
-    <%#= form.label :user_id, style: "display: block" %>
-    <%#= form.number_field :user_id %>
+<!--     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button> -->
   </div>
- -->
-  <div>
-    <%= form.submit %>
   </div>
 <% end %>
